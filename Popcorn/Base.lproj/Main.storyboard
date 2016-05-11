@@ -20,10 +20,20 @@
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0b-XT-wHj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="518"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BDg-lY-K9e" id="IB5-kV-IlV"/>
+                                </connections>
                             </webView>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8w-ME-pwU">
+                                <rect key="frame" x="60" y="526" width="480" height="66"/>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="bannerAd" destination="K8w-ME-pwU" id="4Os-u5-Pf4"/>
+                        <outlet property="webView" destination="d0b-XT-wHj" id="esr-h9-Et1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6p-PM-sGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,7 +104,7 @@
         <!--Popcorn-->
         <scene sceneID="uTc-M8-znp">
             <objects>
-                <splitViewController title="Popcorn" id="On9-1t-yeu" sceneMemberID="viewController">
+                <splitViewController title="Popcorn" id="On9-1t-yeu" customClass="CustomSplitViewController" customModule="Popcorn" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="Euy-lO-p0J" kind="relationship" relationship="masterViewController" id="All-lK-V5V"/>
                         <segue destination="BDg-lY-K9e" kind="relationship" relationship="detailViewController" id="g1b-6n-57R"/>

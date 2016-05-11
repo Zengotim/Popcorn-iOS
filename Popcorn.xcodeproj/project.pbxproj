@@ -20,6 +20,7 @@
 		0A10F8631CE128A900C9184C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A10F8621CE128A900C9184C /* DetailViewController.swift */; };
 		0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */; };
 		0A80C9511CE250B000C162D6 /* Brand.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C9501CE250B000C162D6 /* Brand.strings */; };
+		0AC0EB2F1CE39C1200AB4A2D /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0A10F8621CE128A900C9184C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TkkDataHelper.swift; sourceTree = "<group>"; };
 		0A80C9501CE250B000C162D6 /* Brand.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Brand.strings; sourceTree = "<group>"; };
+		0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				0A10F8341CE11C1200C9184C /* Popcorn.xcdatamodeld */,
 				0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */,
 				0A80C9501CE250B000C162D6 /* Brand.strings */,
+				0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */,
 			);
 			path = Popcorn;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC0EB2F1CE39C1200AB4A2D /* CustomSplitViewController.swift in Sources */,
 				0A10F8361CE11C1200C9184C /* Popcorn.xcdatamodeld in Sources */,
 				0A10F8301CE11C1200C9184C /* ViewController.swift in Sources */,
 				0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */,

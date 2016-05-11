@@ -1,22 +1,18 @@
 //
-//  DetailViewController.swift
+//  CustomSplitViewController.swift
 //  Popcorn
 //
-//  Created by Timothy Goodson on 5/9/16.
+//  Created by Timothy Goodson on 5/11/16.
 //  Copyright © 2016 TK-Squared, LLC. All rights reserved.
 //
 
 import UIKit
-import iAd
 
-class DetailViewController: UIViewController {
+class CustomSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
 
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet var bannerAd: ADBannerView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -25,6 +21,9 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool{
+        return true
+    }
 
     /*
     // MARK: - Navigation

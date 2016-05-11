@@ -24,82 +24,18 @@ class MasterViewControllerTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-
+        //Load the stations list
+        self.stations = helper.getStations("Station")!
+        
+        //Check for newer file on server and download if available
         helper.newerFileAvailable({ (shouldDownload) -> () in
             if shouldDownload {
                 self.helper.deleteAllStations("Station")
-                self.helper.getNewRemoteFile()
+                self.helper.getNewRemoteFile(&self.stations)
             }
         })
         
-        self.stations = helper.getStations("Station")!
         NSLog("Initial Stations size: \(self.stations.count)")
-        
-        
-        /*self.checkShouldDownloadFileAtLocation("http://urltolocation.com/of/file.jpg", completion: { (shouldDownload) -> () in
-            if shouldDownload {
-                // Go download the file now
-                
-            }
-        })*/
-        
-        
-        
-        
-        
-        /*
-        let fileFunction = {
-            let requestURL: NSURL = NSURL(string: mainBundle.localizedStringForKey("file_url", value: nil, table: "Brand"))!
-            let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-            let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithRequest(urlRequest) {
-                (data, response, error) -> Void in
-                
-                let httpResponse = response as! NSHTTPURLResponse
-                let statusCode = httpResponse.statusCode
-                
-                if (statusCode == 200) {
-                    print("Awesome! We got it!")
-                    do{
-                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments)
-                        var path = mainBundle.resourcePath!
-                        path.appendContentsOf("stations-ios.json")
-                        let stream = NSOutputStream.init(toFileAtPath: path, append: false)
-                        var err : NSError?
-                        _ = NSJSONSerialization.writeJSONObject(json, toStream: stream!, options: .PrettyPrinted, error: &err)
-                        
-                        if let iStations = json["stations"] as? [[String: AnyObject]] {
-                            for station in iStations {
-                                if let name = station["name"] as? String {
-                                    if let url = station["url"] as? String {
-                                        print("Station: \(name) located at: \(url)")
-                                        let entity =  NSEntityDescription.entityForName("Station", inManagedObjectContext:managedContext)
-                                        let station = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-                                        station.setValue(name, forKey: "name")
-                                        station.setValue(url, forKey: "url")
-                                        do {
-                                            try managedContext.save()
-                                            //self.stations.append(station)
-                                        } catch let error as NSError  {
-                                            print("Could not save \(error), \(error.userInfo)")
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }catch {
-                        print("Error with Json: \(error)")
-                    }
-
-                } else {
-                    print("\(statusCode)")
-                }
-            }
-            task.resume()
-        }
- */
-        
 
 
     }
