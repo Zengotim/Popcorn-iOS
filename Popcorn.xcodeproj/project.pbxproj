@@ -15,6 +15,11 @@
 		0A10F83B1CE11C1200C9184C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A10F8391CE11C1200C9184C /* LaunchScreen.storyboard */; };
 		0A10F8461CE11C1200C9184C /* PopcornTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A10F8451CE11C1200C9184C /* PopcornTests.swift */; };
 		0A10F8511CE11C1200C9184C /* PopcornUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A10F8501CE11C1200C9184C /* PopcornUITests.swift */; };
+		0A10F85F1CE11CCC00C9184C /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A10F85E1CE11CCC00C9184C /* splash.png */; };
+		0A10F8611CE1214500C9184C /* MasterViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A10F8601CE1214500C9184C /* MasterViewControllerTableViewController.swift */; };
+		0A10F8631CE128A900C9184C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A10F8621CE128A900C9184C /* DetailViewController.swift */; };
+		0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */; };
+		0A80C9511CE250B000C162D6 /* Brand.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C9501CE250B000C162D6 /* Brand.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		0A10F84C1CE11C1200C9184C /* PopcornUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A10F8501CE11C1200C9184C /* PopcornUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornUITests.swift; sourceTree = "<group>"; };
 		0A10F8521CE11C1200C9184C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A10F85E1CE11CCC00C9184C /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		0A10F8601CE1214500C9184C /* MasterViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		0A10F8621CE128A900C9184C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TkkDataHelper.swift; sourceTree = "<group>"; };
+		0A80C9501CE250B000C162D6 /* Brand.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Brand.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +112,15 @@
 				0A10F82D1CE11C1200C9184C /* AppDelegate.swift */,
 				0A10F82F1CE11C1200C9184C /* ViewController.swift */,
 				0A10F8311CE11C1200C9184C /* Main.storyboard */,
+				0A10F8621CE128A900C9184C /* DetailViewController.swift */,
+				0A10F8601CE1214500C9184C /* MasterViewControllerTableViewController.swift */,
 				0A10F8371CE11C1200C9184C /* Assets.xcassets */,
 				0A10F8391CE11C1200C9184C /* LaunchScreen.storyboard */,
+				0A10F85E1CE11CCC00C9184C /* splash.png */,
 				0A10F83C1CE11C1200C9184C /* Info.plist */,
 				0A10F8341CE11C1200C9184C /* Popcorn.xcdatamodeld */,
+				0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */,
+				0A80C9501CE250B000C162D6 /* Brand.strings */,
 			);
 			path = Popcorn;
 			sourceTree = "<group>";
@@ -232,8 +247,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A10F85F1CE11CCC00C9184C /* splash.png in Resources */,
 				0A10F83B1CE11C1200C9184C /* LaunchScreen.storyboard in Resources */,
 				0A10F8381CE11C1200C9184C /* Assets.xcassets in Resources */,
+				0A80C9511CE250B000C162D6 /* Brand.strings in Resources */,
 				0A10F8331CE11C1200C9184C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +278,9 @@
 			files = (
 				0A10F8361CE11C1200C9184C /* Popcorn.xcdatamodeld in Sources */,
 				0A10F8301CE11C1200C9184C /* ViewController.swift in Sources */,
+				0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */,
+				0A10F8631CE128A900C9184C /* DetailViewController.swift in Sources */,
+				0A10F8611CE1214500C9184C /* MasterViewControllerTableViewController.swift in Sources */,
 				0A10F82E1CE11C1200C9184C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +508,7 @@
 				0A10F8571CE11C1200C9184C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A10F8581CE11C1200C9184C /* Build configuration list for PBXNativeTarget "PopcornTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +517,7 @@
 				0A10F85A1CE11C1200C9184C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A10F85B1CE11C1200C9184C /* Build configuration list for PBXNativeTarget "PopcornUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +526,7 @@
 				0A10F85D1CE11C1200C9184C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
