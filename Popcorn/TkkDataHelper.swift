@@ -11,6 +11,10 @@
 import UIKit
 import CoreData
 
+protocol TkkDataRecipient: class {
+    func newDataReceived(newList: [NSManagedObject])
+}
+
 
 class TkkDataHelper: NSObject {
     
@@ -18,6 +22,8 @@ class TkkDataHelper: NSObject {
     let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let mainBundle = NSBundle.mainBundle()
     let dateFormatter = NSDateFormatter()
+    
+    weak var recipient: TkkDataRecipient?
     
     //Check for newer file on server
     func newerFileAvailable(completion:((shouldDownload:Bool) -> ())? ){
@@ -73,7 +79,7 @@ class TkkDataHelper: NSObject {
         task.resume()
     }
     
-    func getNewRemoteFile(inout stationlist: [NSManagedObject]) -> Void {
+    func getNewRemoteFile() -> Void {
 
         //Set up server connection to get file
         let request = NSMutableURLRequest(URL: NSURL(string: NSBundle.mainBundle().localizedStringForKey("file_url", value: nil, table: "Brand"))!)
@@ -123,7 +129,9 @@ class TkkDataHelper: NSObject {
                             }
                         }
                         // Reload the list
-                        stationlist = self.getStations("Station")!
+                        if let masterController = self.recipient as? MasterViewControllerTableViewController{
+                            masterController.newDataReceived(self.getStations("Station")!)
+                        }
                     }
                     
                 }catch {

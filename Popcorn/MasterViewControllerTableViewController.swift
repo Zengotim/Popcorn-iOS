@@ -9,11 +9,16 @@
 import UIKit
 import CoreData
 
+protocol StationViewDelegate: class{
+    func stationSelected(name: String, urlstring: String)
+}
 
-class MasterViewControllerTableViewController: UITableViewController {
+
+class MasterViewControllerTableViewController: UITableViewController, TkkDataRecipient {
     
     var stations = [NSManagedObject]()
     let helper = TkkDataHelper()
+    weak var delegate: StationViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +36,7 @@ class MasterViewControllerTableViewController: UITableViewController {
         helper.newerFileAvailable({ (shouldDownload) -> () in
             if shouldDownload {
                 self.helper.deleteAllStations("Station")
-                self.helper.getNewRemoteFile(&self.stations)
+                self.helper.getNewRemoteFile()
             }
         })
         
@@ -68,6 +73,14 @@ class MasterViewControllerTableViewController: UITableViewController {
         cell.detailTextLabel!.text = station.valueForKey("url") as? String
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedStation = self.stations[indexPath.row]
+        self.delegate?.stationSelected((selectedStation.valueForKey("name") as? String)!, urlstring: (selectedStation.valueForKey("url") as? String)!)
+        if let detailViewController = self.delegate as? DetailViewController {
+            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        }
     }
     
 
@@ -115,5 +128,12 @@ class MasterViewControllerTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: -TkkDataRecipient protocol implementation
+    
+    func newDataReceived(newList: [NSManagedObject]){
+        self.stations = newList
+        self.tableView.reloadData()
+    }
 
 }

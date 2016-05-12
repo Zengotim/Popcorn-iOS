@@ -8,6 +8,7 @@
 
 import UIKit
 import iAd
+import CoreData
 
 class DetailViewController: UIViewController {
 
@@ -36,4 +37,12 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
+
+extension DetailViewController: StationViewDelegate{
+    func stationSelected(name: String, urlstring: String) {
+        let url = NSURL(string: urlstring)
+        let request = NSURLRequest(URL: url!)
+        webView.loadRequest(request)
+    }
 }
