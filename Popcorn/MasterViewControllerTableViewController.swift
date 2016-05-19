@@ -13,7 +13,7 @@ protocol StationViewDelegate: class{
     func stationSelected(name: String, urlstring: String)
 }
 
-
+@IBDesignable
 class MasterViewControllerTableViewController: UITableViewController, TkkDataRecipient {
     
     var stations = [NSManagedObject]()
@@ -62,16 +62,28 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
         NSLog("Stations list size: \(stations.count)")
         return stations.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TkkTableViewCell
 
-        cell.backgroundColor = UIColor.yellowColor()
+        let gradient = CAGradientLayer()
+        gradient.frame = cell.bounds
+        gradient.colors = NSArray(objects: [UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0).CGColor,
+                                                 UIColor(red: 0.99, green: 0.99, blue: 0.0196078, alpha: 1.0).CGColor,
+            UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0).CGColor], count: 3) as [AnyObject]
+        cell.backgroundColor = UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0)
+        cell.layer.insertSublayer(gradient, below: cell.contentView.layer)
         let station = stations[indexPath.row]
-        cell.textLabel!.text = station.valueForKey("name") as? String
-        cell.detailTextLabel!.text = station.valueForKey("url") as? String
 
+        cell.titleLabel?.backgroundColor = UIColor.clearColor()
+        cell.titleLabel!.text = station.valueForKey("name") as? String
+        cell.subtitleLabel?.backgroundColor = UIColor.clearColor()
+        cell.subtitleLabel!.text = station.valueForKey("url") as? String
+        let stationIcon = station.valueForKey("icon") as? UIImage
+        if (stationIcon != nil){
+            cell.iconView.image = stationIcon
+        }
         return cell
     }
     
@@ -92,24 +104,61 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            helper.deleteStation(self.stations[indexPath.row])
+            self.stations = helper.getStations("Station")!
+            for i in indexPath.row + 1..<self.stations.count {
+                self.stations[i].setValue(i-1, forKey: "position")
+            }
+            self.stations = helper.getStations("Station")!
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+
         } else if editingStyle == .Insert {
+            //Not happening, Jethro
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+        
+        
+        if fromIndexPath.row > toIndexPath.row
+        {
+            for i in toIndexPath.row..<fromIndexPath.row
+                
+            {
+                self.stations[i].setValue(i+1, forKey: "position")
+                
+                
+            }
+            
+            self.stations[fromIndexPath.row].setValue(toIndexPath.row, forKey: "position")
+        }
+        if fromIndexPath.row < toIndexPath.row
+        {
+            
+            for i in fromIndexPath.row + 1...toIndexPath.row
+                
+            {
+                self.stations[i].setValue(i-1, forKey: "position")
+                
+                
+            }
+            
+            self.stations[fromIndexPath.row].setValue(toIndexPath.row, forKey: "position")
+        }
+        self.stations = helper.getStations("Station")!
+        
     }
-    */
+    
+    
 
     /*
     // Override to support conditional rearranging of the table view.

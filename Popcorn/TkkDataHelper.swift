@@ -112,18 +112,22 @@ class TkkDataHelper: NSObject {
                     stream?.close()
                     //iterate through the stations and add them to db
                     if let iStations = json["stations"] as? [[String: AnyObject]] {
+                        var i = 0
                         for station in iStations {
                             if let name = station["name"] as? String {
                                 if let url = station["url"] as? String {
-                                    print("Station: \(name) located at: \(url)")
+                                    NSLog("Station: \(name) located at: \(url)")
                                     let entity =  NSEntityDescription.entityForName("Station", inManagedObjectContext:self.managedContext)
                                     let station = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedContext)
                                     station.setValue(name, forKey: "name")
                                     station.setValue(url, forKey: "url")
+                                    station.setValue(UIImagePNGRepresentation(UIImage.init(named: "popcorn-icon.png")!), forKey: "icon")
+                                    station.setValue(i, forKey: "position")
+                                    i += 1
                                     do {
                                         try self.managedContext.save()
                                     } catch let error as NSError  {
-                                        print("Could not save \(error), \(error.userInfo)")
+                                        NSLog("Could not save \(error), \(error.userInfo)")
                                     }
                                 }
                             }
@@ -135,11 +139,11 @@ class TkkDataHelper: NSObject {
                     }
                     
                 }catch {
-                    print("Error with Json: \(error) \(data)")
+                    NSLog("Error with Json: \(error) \(data)")
                 }
                 
             } else {
-                print("\(statusCode)")
+                NSLog("\(statusCode)")
             }
         }
         task.resume()
@@ -160,7 +164,8 @@ class TkkDataHelper: NSObject {
                 success = true
             }
         } catch let error as NSError {
-            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+            NSLog("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+            success = false
         }
         return success
     }
@@ -168,15 +173,29 @@ class TkkDataHelper: NSObject {
     func getStations(entity: String) -> [NSManagedObject]? {
         // Standard data request
         let fetchRequest = NSFetchRequest(entityName: entity)
+        let sortDescriptor = NSSortDescriptor(key: "position", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
 
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
                 return results as? [NSManagedObject]
         }catch let error as NSError {
-            print("aww snap! \(error), \(error.userInfo)")
+            NSLog("aww snap! \(error), \(error.userInfo)")
         }
         return nil
     }
+    
+    func deleteStation(station: NSManagedObject) -> Void {
+        
+        managedContext.deleteObject(station)
+        do {
+            try managedContext.save()
+        }
+        catch let error as NSError {
+            NSLog("Could not delete station \(station), error: \(error)")
+        }
+    }
+
     
 }

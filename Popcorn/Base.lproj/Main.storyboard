@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="On9-1t-yeu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="On9-1t-yeu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Detail View Controller-->
@@ -17,18 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0b-XT-wHj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="518"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0b-XT-wHj">
+                                <rect key="frame" x="20" y="20" width="560" height="498"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="BDg-lY-K9e" id="IB5-kV-IlV"/>
                                 </connections>
                             </webView>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8w-ME-pwU">
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8w-ME-pwU">
                                 <rect key="frame" x="60" y="526" width="480" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="480" id="V8g-p9-Ovg"/>
+                                    <constraint firstAttribute="height" constant="66" id="peV-6K-tvF"/>
+                                </constraints>
                             </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d0b-XT-wHj" firstAttribute="trailing" secondItem="3z1-kc-0eg" secondAttribute="trailingMargin" id="L2t-cZ-Orm"/>
+                            <constraint firstItem="d0b-XT-wHj" firstAttribute="leading" secondItem="3z1-kc-0eg" secondAttribute="leadingMargin" id="Z2H-A7-ukT"/>
+                            <constraint firstItem="d0b-XT-wHj" firstAttribute="top" secondItem="h5K-lT-QPd" secondAttribute="bottom" id="hgQ-7U-FSK"/>
+                            <constraint firstItem="K8w-ME-pwU" firstAttribute="top" secondItem="d0b-XT-wHj" secondAttribute="bottom" constant="8" id="jdI-XC-ncJ"/>
+                            <constraint firstItem="esp-84-ATt" firstAttribute="top" secondItem="K8w-ME-pwU" secondAttribute="bottom" constant="8" id="xiC-QS-OXV"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="bannerAd" destination="K8w-ME-pwU" id="4Os-u5-Pf4"/>
@@ -39,7 +51,7 @@
             </objects>
             <point key="canvasLocation" x="-325" y="-514"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Popcorn-->
         <scene sceneID="ZlV-lH-l27">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="hgW-xo-5WG" customClass="MasterViewControllerTableViewController" customModule="Popcorn" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,30 +60,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="iM6-hZ-XUJ" detailTextLabel="zLq-iS-y5W" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="smb-SA-7jG">
-                                <rect key="frame" x="0.0" y="92" width="600" height="71"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="71" id="smb-SA-7jG" customClass="TkkTableViewCell" customModule="Popcorn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="122" width="600" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="smb-SA-7jG" id="4Tw-uT-6hX">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iM6-hZ-XUJ">
-                                            <rect key="frame" x="15" y="18" width="32" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popcorn-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-r0-gjp">
+                                            <rect key="frame" x="8" y="8" width="62" height="62"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxg-M9-e3m">
+                                            <rect key="frame" x="78" y="8" width="445" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLq-iS-y5W">
-                                            <rect key="frame" x="15" y="38" width="41" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psc-10-UF5">
+                                            <rect key="frame" x="78" y="41" width="445" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="cell"/>
+                                <connections>
+                                    <outlet property="iconView" destination="1Pe-r0-gjp" id="JMb-Uu-UaV"/>
+                                    <outlet property="subtitleLabel" destination="psc-10-UF5" id="qIL-hn-AwP"/>
+                                    <outlet property="titleLabel" destination="rxg-M9-e3m" id="y3I-5N-stn"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -79,7 +97,7 @@
                             <outlet property="delegate" destination="hgW-xo-5WG" id="NiH-EP-s2R"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="RpQ-Vw-Cab"/>
+                    <navigationItem key="navigationItem" title="Popcorn" prompt="Pop Music Stations" id="RpQ-Vw-Cab"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adQ-Qb-zG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,4 +133,7 @@
             <point key="canvasLocation" x="-1145" y="-844"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="popcorn-icon.png" width="512" height="512"/>
+    </resources>
 </document>
