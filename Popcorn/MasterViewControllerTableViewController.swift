@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol StationViewDelegate: class{
-    func stationSelected(name: String, urlstring: String)
+    func stationSelected(station: NSManagedObject)
 }
 
 @IBDesignable
@@ -29,6 +29,10 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        let dlButton = UIBarButtonItem(image: UIImage.init(named: "dl_arrow.png"), style: .Plain, target: self, action: #selector(MasterViewControllerTableViewController.getNewList))
+        let spacerButton = UIBarButtonItem(title: "      ", style: .Plain, target: self, action: nil)
+        let aboutButton = UIBarButtonItem(title: "About", style: .Plain, target: self, action: #selector(MasterViewControllerTableViewController.showAbout))
+        self.navigationItem.leftBarButtonItems = [dlButton, spacerButton, aboutButton]
         //Load the stations list
         self.stations = helper.getStations("Station")!
         
@@ -89,7 +93,8 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedStation = self.stations[indexPath.row]
-        self.delegate?.stationSelected((selectedStation.valueForKey("name") as? String)!, urlstring: (selectedStation.valueForKey("url") as? String)!)
+        //self.delegate?.stationSelected((selectedStation.valueForKey("name") as? String)!, urlstring: (selectedStation.valueForKey("url") as? String)!)
+        self.delegate?.stationSelected(selectedStation)
         if let detailViewController = self.delegate as? DetailViewController {
             splitViewController?.showDetailViewController(detailViewController, sender: nil)
         }
@@ -158,6 +163,17 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
         
     }
     
+    // MARK: - Click Handlers
+    
+    //About button
+    func showAbout() -> Void {
+        //TODO
+    }
+    
+    //Get new list button
+    func getNewList() -> Void {
+        //TODO
+    }
     
 
     /*
