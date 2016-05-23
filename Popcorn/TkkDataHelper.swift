@@ -85,8 +85,7 @@ class TkkDataHelper: NSObject {
         let request = NSMutableURLRequest(URL: NSURL(string: NSBundle.mainBundle().localizedStringForKey("file_url", value: nil, table: "Brand"))!)
         let session = NSURLSession.sharedSession()
         //Async task with closure
-        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in            
             let httpResponse = response as! NSHTTPURLResponse
             let statusCode = httpResponse.statusCode
             

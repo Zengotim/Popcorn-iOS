@@ -18,6 +18,7 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     
     var stations = [NSManagedObject]()
     let helper = TkkDataHelper()
+    let indeterminant = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     weak var delegate: StationViewDelegate?
     
     override func viewDidLoad() {
@@ -33,12 +34,19 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
         let spacerButton = UIBarButtonItem(title: "      ", style: .Plain, target: self, action: nil)
         let aboutButton = UIBarButtonItem(title: "About", style: .Plain, target: self, action: #selector(MasterViewControllerTableViewController.showAbout))
         self.navigationItem.leftBarButtonItems = [dlButton, spacerButton, aboutButton]
+        
+        self.indeterminant.center = self.view.center
+        self.view.addSubview(indeterminant)
+        self.indeterminant.hidden = true
+        
         //Load the stations list
         self.stations = helper.getStations("Station")!
         
         //Check for newer file on server and download if available
         helper.newerFileAvailable({ (shouldDownload) -> () in
             if shouldDownload {
+                self.indeterminant.hidden = false
+                self.indeterminant.startAnimating()
                 self.helper.deleteAllStations("Station")
                 self.helper.getNewRemoteFile()
             }
@@ -172,7 +180,17 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     
     //Get new list button
     func getNewList() -> Void {
-        //TODO
+        
+        let reloadConfirm = UIAlertController(title: "Download List?", message: "Reset list to server version?", preferredStyle: .Alert)
+        reloadConfirm.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            self.indeterminant.hidden = false
+            self.indeterminant.startAnimating()
+            self.helper.deleteAllStations("Station")
+            self.helper.getNewRemoteFile()
+        }))
+        reloadConfirm.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        presentViewController(reloadConfirm, animated: true, completion: nil)
+
     }
     
 
@@ -199,6 +217,8 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     func newDataReceived(newList: [NSManagedObject]){
         self.stations = newList
         self.tableView.reloadData()
+        self.indeterminant.stopAnimating()
+        self.indeterminant.hidden = true
     }
 
 }

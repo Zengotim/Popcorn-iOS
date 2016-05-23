@@ -20,6 +20,7 @@
 		0A55C76B1CEF677500111474 /* dl_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A55C76A1CEF677500111474 /* dl_arrow.png */; };
 		0A55C76D1CEF743400111474 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A55C76C1CEF743400111474 /* share_button.png */; };
 		0A55C7701CEF806B00111474 /* Translatable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A55C76F1CEF806B00111474 /* Translatable.strings */; };
+		0A6291F91CF354E100207C85 /* CompileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6291F81CF354E100207C85 /* CompileHelper.m */; };
 		0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */; };
 		0A80C9511CE250B000C162D6 /* Brand.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C9501CE250B000C162D6 /* Brand.strings */; };
 		0AC0EB2F1CE39C1200AB4A2D /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */; };
@@ -64,6 +65,9 @@
 		0A55C76A1CEF677500111474 /* dl_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dl_arrow.png; sourceTree = "<group>"; };
 		0A55C76C1CEF743400111474 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
 		0A55C76F1CEF806B00111474 /* Translatable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Translatable.strings; sourceTree = "<group>"; };
+		0A6291F61CF354E000207C85 /* Popcorn-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Popcorn-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A6291F71CF354E100207C85 /* CompileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompileHelper.h; sourceTree = "<group>"; };
+		0A6291F81CF354E100207C85 /* CompileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompileHelper.m; sourceTree = "<group>"; };
 		0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TkkDataHelper.swift; sourceTree = "<group>"; };
 		0A80C9501CE250B000C162D6 /* Brand.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Brand.strings; sourceTree = "<group>"; };
 		0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
@@ -99,11 +103,14 @@
 		0A10F8211CE11C1200C9184C = {
 			isa = PBXGroup;
 			children = (
+				0A6291F71CF354E100207C85 /* CompileHelper.h */,
+				0A6291F81CF354E100207C85 /* CompileHelper.m */,
 				0A55C76E1CEF744500111474 /* Graphic Assets */,
 				0A10F82C1CE11C1200C9184C /* Popcorn */,
 				0A10F8441CE11C1200C9184C /* PopcornTests */,
 				0A10F84F1CE11C1200C9184C /* PopcornUITests */,
 				0A10F82B1CE11C1200C9184C /* Products */,
+				0A6291F61CF354E000207C85 /* Popcorn-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +313,7 @@
 				0AC0EB2F1CE39C1200AB4A2D /* CustomSplitViewController.swift in Sources */,
 				0A10F8361CE11C1200C9184C /* Popcorn.xcdatamodeld in Sources */,
 				0AEB6FC31CEE0810000B1E70 /* TkkTableViewCell.swift in Sources */,
+				0A6291F91CF354E100207C85 /* CompileHelper.m in Sources */,
 				0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */,
 				0A10F8631CE128A900C9184C /* DetailViewController.swift in Sources */,
 				0A10F8611CE1214500C9184C /* MasterViewControllerTableViewController.swift in Sources */,
@@ -453,10 +461,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-squared.Popcorn";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Popcorn-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -464,10 +475,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Popcorn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-squared.Popcorn";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Popcorn-Bridging-Header.h";
 			};
 			name = Release;
 		};
