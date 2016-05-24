@@ -101,6 +101,89 @@
             </objects>
             <point key="canvasLocation" x="495" y="-1175"/>
         </scene>
+        <!--About Popcorn-->
+        <scene sceneID="l8e-gl-k2S">
+            <objects>
+                <viewController restorationIdentifier="aboutViewController" storyboardIdentifier="aboutViewController" title="About Popcorn" id="j9q-ki-OAv" customClass="TkkAboutViewController" customModule="Popcorn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C1q-Mz-ruV"/>
+                        <viewControllerLayoutGuide type="bottom" id="VMP-sK-KU6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bwj-QS-QYH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-g0-32l">
+                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-Xk-neK">
+                                <rect key="frame" x="55" y="285" width="490" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" link="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjj-77-NBv">
+                                <rect key="frame" x="55" y="256" width="490" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qI4-k8-iHZ">
+                                <rect key="frame" x="55" y="323" width="490" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRM-Y5-Sm6">
+                                <rect key="frame" x="55" y="352" width="490" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qa2-LE-rv7">
+                                <rect key="frame" x="55" y="227" width="490" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qa2-LE-rv7" firstAttribute="leading" secondItem="Rjj-77-NBv" secondAttribute="leading" id="1Uy-Zr-kFn"/>
+                            <constraint firstItem="Rjj-77-NBv" firstAttribute="top" secondItem="qa2-LE-rv7" secondAttribute="bottom" constant="8" symbolic="YES" id="2Es-Ve-rcI"/>
+                            <constraint firstItem="6Sg-Xk-neK" firstAttribute="leading" secondItem="bwj-QS-QYH" secondAttribute="leadingMargin" constant="35" id="AE2-Ln-Lpn"/>
+                            <constraint firstItem="qI4-k8-iHZ" firstAttribute="top" secondItem="6Sg-Xk-neK" secondAttribute="bottom" constant="8" symbolic="YES" id="Fiy-tV-C37"/>
+                            <constraint firstItem="qa2-LE-rv7" firstAttribute="leading" secondItem="6Sg-Xk-neK" secondAttribute="leading" id="IFu-K0-jUT"/>
+                            <constraint firstItem="xRM-Y5-Sm6" firstAttribute="top" secondItem="qI4-k8-iHZ" secondAttribute="bottom" constant="8" symbolic="YES" id="L4s-RP-yCj"/>
+                            <constraint firstItem="qa2-LE-rv7" firstAttribute="trailing" secondItem="6Sg-Xk-neK" secondAttribute="trailing" id="PjI-hy-PQ6"/>
+                            <constraint firstItem="xRM-Y5-Sm6" firstAttribute="leading" secondItem="6Sg-Xk-neK" secondAttribute="leading" id="VXP-Mx-5dZ"/>
+                            <constraint firstItem="XVR-g0-32l" firstAttribute="top" secondItem="C1q-Mz-ruV" secondAttribute="bottom" constant="8" symbolic="YES" id="W6y-d6-XYJ"/>
+                            <constraint firstItem="6Sg-Xk-neK" firstAttribute="centerX" secondItem="XVR-g0-32l" secondAttribute="centerX" id="WVN-fC-39q"/>
+                            <constraint firstItem="xRM-Y5-Sm6" firstAttribute="trailing" secondItem="6Sg-Xk-neK" secondAttribute="trailing" id="Xdq-8w-KEo"/>
+                            <constraint firstItem="6Sg-Xk-neK" firstAttribute="top" secondItem="Rjj-77-NBv" secondAttribute="bottom" constant="8" symbolic="YES" id="Yma-IY-ZSt"/>
+                            <constraint firstItem="xRM-Y5-Sm6" firstAttribute="trailing" secondItem="qI4-k8-iHZ" secondAttribute="trailing" id="a0y-bT-A9F"/>
+                            <constraint firstItem="qa2-LE-rv7" firstAttribute="trailing" secondItem="Rjj-77-NBv" secondAttribute="trailing" id="aL5-TH-ygs"/>
+                            <constraint firstAttribute="bottom" secondItem="XVR-g0-32l" secondAttribute="bottom" constant="20" symbolic="YES" id="b17-EC-7Aw"/>
+                            <constraint firstItem="XVR-g0-32l" firstAttribute="trailing" secondItem="bwj-QS-QYH" secondAttribute="trailingMargin" id="cdf-rk-pJb"/>
+                            <constraint firstItem="6Sg-Xk-neK" firstAttribute="centerY" secondItem="bwj-QS-QYH" secondAttribute="centerY" id="dkq-8b-0mj"/>
+                            <constraint firstItem="XVR-g0-32l" firstAttribute="leading" secondItem="bwj-QS-QYH" secondAttribute="leadingMargin" id="rnC-0l-Zhb"/>
+                            <constraint firstItem="xRM-Y5-Sm6" firstAttribute="leading" secondItem="qI4-k8-iHZ" secondAttribute="leading" id="vVn-es-Kxf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="companyLabel" destination="xRM-Y5-Sm6" id="iy0-dr-sBZ"/>
+                        <outlet property="compileLabel" destination="qI4-k8-iHZ" id="pXc-bs-2EO"/>
+                        <outlet property="nameLabel" destination="qa2-LE-rv7" id="X6A-fb-kyN"/>
+                        <outlet property="urlTextView" destination="6Sg-Xk-neK" id="VHx-ov-lHb"/>
+                        <outlet property="versionLabel" destination="Rjj-77-NBv" id="8CY-fw-P66"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmU-do-46m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="615" y="-442"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="RCi-jl-FRu">
             <objects>
@@ -134,5 +217,6 @@
     </scenes>
     <resources>
         <image name="popcorn-icon.png" width="512" height="512"/>
+        <image name="splash.png" width="400" height="590"/>
     </resources>
 </document>

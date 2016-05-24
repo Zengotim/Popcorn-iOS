@@ -14,11 +14,14 @@ protocol StationViewDelegate: class{
 }
 
 @IBDesignable
-class MasterViewControllerTableViewController: UITableViewController, TkkDataRecipient {
+class MasterViewControllerTableViewController: UITableViewController, TkkDataRecipient, UIPopoverPresentationControllerDelegate {
     
     var stations = [NSManagedObject]()
     let helper = TkkDataHelper()
     let indeterminant = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    //let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let aboutViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("aboutViewController")
+    let popoverAboutViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("aboutViewController").popoverPresentationController
     weak var delegate: StationViewDelegate?
     
     override func viewDidLoad() {
@@ -80,12 +83,17 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TkkTableViewCell
 
         let gradient = CAGradientLayer()
-        gradient.frame = cell.bounds
+        gradient.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y, cell.bounds.width, cell.bounds.height*7/8)
         gradient.colors = NSArray(objects: [UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0).CGColor,
                                                  UIColor(red: 0.99, green: 0.99, blue: 0.0196078, alpha: 1.0).CGColor,
             UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0).CGColor], count: 3) as [AnyObject]
-        cell.backgroundColor = UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0)
+        let dropShadow = CAGradientLayer()
+        dropShadow.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y + cell.bounds.height*7/8, cell.bounds.width, cell.bounds.height/8)
+        dropShadow.colors = NSArray(objects: [UIColor(red: 0.6353, green: 0.6353, blue: 0.6353, alpha: 1.0).CGColor, UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor], count: 2) as [AnyObject]
+        //cell.backgroundColor = UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0)
+        cell.layer.insertSublayer(dropShadow, below: cell.contentView.layer)
         cell.layer.insertSublayer(gradient, below: cell.contentView.layer)
+        
         let station = stations[indexPath.row]
 
         cell.titleLabel?.backgroundColor = UIColor.clearColor()
@@ -175,7 +183,26 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     
     //About button
     func showAbout() -> Void {
-        //TODO
+
+        aboutViewController.modalPresentationStyle = .Popover
+        //aboutViewController.preferredContentSize = CGSizeMake(300, 450)
+
+        popoverAboutViewController?.permittedArrowDirections = .Any
+        popoverAboutViewController?.delegate = self
+        popoverAboutViewController?.sourceView = self.view
+        popoverAboutViewController?.sourceRect = CGRect(
+            x: UIScreen.mainScreen().bounds.width/2 - 150,
+            y: UIScreen.mainScreen().bounds.height/2 - 225,
+            width: 50,
+            height: 75)
+        presentViewController(aboutViewController, animated: true, completion: nil)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(9, target: self, selector: #selector(MasterViewControllerTableViewController.dismissAbout), userInfo: nil, repeats: false)
+        
+    }
+    
+    func dismissAbout() -> Void {
+        self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //Get new list button

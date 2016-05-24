@@ -23,6 +23,7 @@
 		0A6291F91CF354E100207C85 /* CompileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6291F81CF354E100207C85 /* CompileHelper.m */; };
 		0A80C94D1CE2452500C162D6 /* TkkDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */; };
 		0A80C9511CE250B000C162D6 /* Brand.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A80C9501CE250B000C162D6 /* Brand.strings */; };
+		0A823CAE1CF4B46000A82E8D /* TkkAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A823CAD1CF4B46000A82E8D /* TkkAboutViewController.swift */; };
 		0AC0EB2F1CE39C1200AB4A2D /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */; };
 		0AEB6FC31CEE0810000B1E70 /* TkkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB6FC21CEE0810000B1E70 /* TkkTableViewCell.swift */; };
 		0AEB6FC71CEE14A2000B1E70 /* popcorn-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEB6FC61CEE14A2000B1E70 /* popcorn-icon.png */; };
@@ -70,6 +71,7 @@
 		0A6291F81CF354E100207C85 /* CompileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompileHelper.m; sourceTree = "<group>"; };
 		0A80C94C1CE2452500C162D6 /* TkkDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TkkDataHelper.swift; sourceTree = "<group>"; };
 		0A80C9501CE250B000C162D6 /* Brand.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Brand.strings; sourceTree = "<group>"; };
+		0A823CAD1CF4B46000A82E8D /* TkkAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TkkAboutViewController.swift; sourceTree = "<group>"; };
 		0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
 		0AEB6FC21CEE0810000B1E70 /* TkkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TkkTableViewCell.swift; sourceTree = "<group>"; };
 		0AEB6FC61CEE14A2000B1E70 /* popcorn-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popcorn-icon.png"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				0AC0EB2E1CE39C1200AB4A2D /* CustomSplitViewController.swift */,
 				0AEB6FC21CEE0810000B1E70 /* TkkTableViewCell.swift */,
 				0A55C76F1CEF806B00111474 /* Translatable.strings */,
+				0A823CAD1CF4B46000A82E8D /* TkkAboutViewController.swift */,
 			);
 			path = Popcorn;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A823CAE1CF4B46000A82E8D /* TkkAboutViewController.swift in Sources */,
 				0AC0EB2F1CE39C1200AB4A2D /* CustomSplitViewController.swift in Sources */,
 				0A10F8361CE11C1200C9184C /* Popcorn.xcdatamodeld in Sources */,
 				0AEB6FC31CEE0810000B1E70 /* TkkTableViewCell.swift in Sources */,
