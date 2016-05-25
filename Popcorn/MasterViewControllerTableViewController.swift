@@ -82,17 +82,39 @@ class MasterViewControllerTableViewController: UITableViewController, TkkDataRec
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TkkTableViewCell
 
-        let gradient = CAGradientLayer()
-        gradient.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y, cell.bounds.width, cell.bounds.height*7/8)
-        gradient.colors = NSArray(objects: [UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0).CGColor,
-                                                 UIColor(red: 0.99, green: 0.99, blue: 0.0196078, alpha: 1.0).CGColor,
-            UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0).CGColor], count: 3) as [AnyObject]
+        // Digital art, bitches!
+        // Plank style with brushed aluminum & drop shadow!
+        let topBullnose = CAGradientLayer()
+        topBullnose.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y , cell.bounds.width, cell.bounds.height/8)
+        topBullnose.colors = NSArray(objects: [UIColor(red: 0.62109, green: 0.54296, blue: 0.01172, alpha: 1.0).CGColor, UIColor(red: 0.95294, green: 0.83137, blue: 0.01961, alpha: 1.0).CGColor], count: 2) as [AnyObject]
+        
+        let bottomBullnose = CAGradientLayer()
+        bottomBullnose.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y + cell.bounds.height*6/8, cell.bounds.width, cell.bounds.height/8)
+        bottomBullnose.colors = NSArray(objects: [UIColor(red: 0.95294, green: 0.83137, blue: 0.01961, alpha: 1.0).CGColor, UIColor(red: 0.62109, green: 0.54296, blue: 0.01172, alpha: 1.0).CGColor], count: 2) as [AnyObject]
+        
+        let flatSurface = CAGradientLayer()
+        flatSurface.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y + cell.bounds.height/8, cell.bounds.width, cell.bounds.height*5/8)
+        flatSurface.backgroundColor = UIColor(red: 0.95294, green: 0.83137, blue: 0.01961, alpha: 1.0).CGColor
+        
         let dropShadow = CAGradientLayer()
         dropShadow.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y + cell.bounds.height*7/8, cell.bounds.width, cell.bounds.height/8)
         dropShadow.colors = NSArray(objects: [UIColor(red: 0.6353, green: 0.6353, blue: 0.6353, alpha: 1.0).CGColor, UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0).CGColor], count: 2) as [AnyObject]
-        //cell.backgroundColor = UIColor(red: 0.9529411, green: 0.8313725, blue: 0.0196078, alpha: 1.0)
+
+        // Add the color layers in order
         cell.layer.insertSublayer(dropShadow, below: cell.contentView.layer)
-        cell.layer.insertSublayer(gradient, below: cell.contentView.layer)
+        cell.layer.insertSublayer(topBullnose, below: cell.contentView.layer)
+        cell.layer.insertSublayer(bottomBullnose, below: cell.contentView.layer)
+        cell.layer.insertSublayer(flatSurface, below: cell.contentView.layer)
+        
+        // Generate random streaks for the brushed look
+        for line in 0...Int(flatSurface.frame.size.height){
+            let streak = CAGradientLayer()
+            if drand48() > 0.10 {
+                streak.frame = CGRectMake(CGFloat(drand48())*cell.bounds.width - cell.bounds.width/4, CGFloat(line) + cell.bounds.height/8, CGFloat(drand48())*cell.bounds.width, 1.0)
+                streak.backgroundColor = UIColor(red: 0.95294 + CGFloat(drand48()*0.05), green: 0.83137 + CGFloat(drand48()*0.05), blue: 0.01961, alpha: 1.0).CGColor
+                cell.layer.insertSublayer(streak, below: cell.contentView.layer)
+            }
+        }
         
         let station = stations[indexPath.row]
 

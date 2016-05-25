@@ -65,22 +65,39 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popcorn-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-r0-gjp">
-                                            <rect key="frame" x="8" y="8" width="62" height="62"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popcorn-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-r0-gjp">
+                                            <rect key="frame" x="8" y="6" width="56" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="56" id="ihH-ce-dR6"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxg-M9-e3m">
-                                            <rect key="frame" x="78" y="8" width="445" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxg-M9-e3m">
+                                            <rect key="frame" x="78" y="0.0" width="445" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="AXT-sz-fZN"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psc-10-UF5">
-                                            <rect key="frame" x="78" y="41" width="445" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psc-10-UF5">
+                                            <rect key="frame" x="78" y="32" width="445" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1Pe-r0-gjp" firstAttribute="leading" secondItem="4Tw-uT-6hX" secondAttribute="leadingMargin" id="HVd-Nq-Rnh"/>
+                                        <constraint firstItem="1Pe-r0-gjp" firstAttribute="top" secondItem="4Tw-uT-6hX" secondAttribute="topMargin" constant="-2" id="IWv-AU-HBQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="rxg-M9-e3m" secondAttribute="trailing" constant="36" id="JII-CK-1jH"/>
+                                        <constraint firstItem="1Pe-r0-gjp" firstAttribute="bottom" secondItem="4Tw-uT-6hX" secondAttribute="bottomMargin" id="PHM-sl-bEb"/>
+                                        <constraint firstItem="psc-10-UF5" firstAttribute="leading" secondItem="1Pe-r0-gjp" secondAttribute="trailing" constant="14" id="X6p-Ba-362"/>
+                                        <constraint firstItem="rxg-M9-e3m" firstAttribute="leading" secondItem="psc-10-UF5" secondAttribute="leading" id="b6D-yM-J2e"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="psc-10-UF5" secondAttribute="bottom" constant="9" id="frD-eR-CDm"/>
+                                        <constraint firstItem="rxg-M9-e3m" firstAttribute="top" secondItem="4Tw-uT-6hX" secondAttribute="top" id="w71-jt-D5r"/>
+                                        <constraint firstItem="rxg-M9-e3m" firstAttribute="trailing" secondItem="psc-10-UF5" secondAttribute="trailing" id="xNm-VJ-etp"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="cell"/>
                                 <connections>
